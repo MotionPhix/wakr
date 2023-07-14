@@ -24,6 +24,11 @@ Route::middleware('splade')->group(function () {
     )->middleware(['auth', 'verified'])->name('posts.index');
 
     Route::get(
+      '/',
+      \App\Actions\Posts\StorePost::class
+    )->middleware(['auth', 'verified'])->name('posts.store');
+
+    Route::get(
       '/{post}',
       \App\Actions\Posts\ShowPost::class
     )->middleware(['auth', 'verified'])->name('posts.show');
