@@ -1,0 +1,28 @@
+<script>
+import { inject } from 'vue';
+
+// const Splade = inject("$splade");
+
+// defineProps({
+//   'article': string
+// });
+
+export default {
+  props: ['article'],
+
+  setup({ article }, { slots }) {
+
+    const Splade = inject("$splade");
+
+    const go = function () {
+      alert(article.title)
+    };
+
+    Splade.visit(`/post/${article.id}`);
+
+    return () => slots.default({
+      action: go,
+    });
+  }
+};
+</script>
