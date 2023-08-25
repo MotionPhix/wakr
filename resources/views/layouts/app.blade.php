@@ -2,8 +2,8 @@
   @include('layouts.navigation')
 
   <!-- Page Heading -->
-  <header class="bg-white shadow sticky top-0">
-    <div class="max-w-7xl mx-auto py-4 px-6 sm:px-6 lg:px-8 flex items-center justify-between">
+  <header class="sticky top-0 bg-white shadow">
+    <div class="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
       {{ $header }}
     </div>
   </header>
@@ -13,20 +13,20 @@
     {{ $slot }}
   </main>
 
-  <footer class="text-gray-600 body-font max-w-7xl mx-auto">
-    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-      <Link 
-        class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+  <footer class="max-w-2xl mx-auto text-gray-600 body-font">
+    <div class="container flex flex-col items-center px-5 py-8 mx-auto sm:flex-row">
+      <Link
+        class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start"
         href="{{ route('dashboard') }}">
-        <x-application-logo 
-            class="w-10 h-10 text-white fill-current p-2 bg-lime-500 rounded-full" />
+        <x-application-logo
+            class="w-10 h-10 p-2 text-white rounded-full fill-current bg-lime-500" />
         <span class="ml-3 text-xl">{{ config('app.name') }}</span>
       </Link>
 
-      <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 {{ config('app.name') }} —
-        <a href="https://twitter.com/_motionphix" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@kingsley</a>
+      <p class="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0">© 2020 {{ config('app.name') }} —
+        <a href="https://twitter.com/_motionplus" class="ml-1 text-gray-600" rel="noopener noreferrer" target="_blank">@kingsley</a>
       </p>
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <span class="inline-flex justify-center mt-4 sm:ml-auto sm:mt-0 sm:justify-start">
         <a class="text-gray-500">
           <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>

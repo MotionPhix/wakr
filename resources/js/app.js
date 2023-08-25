@@ -1,6 +1,8 @@
 import "./bootstrap";
 import "../css/app.css";
 import "@protonemedia/laravel-splade/dist/style.css";
+import "@protonemedia/laravel-splade/dist/jodit.css";
+
 import VueApexCharts from "vue3-apexcharts";
 
 import { createApp } from "vue";

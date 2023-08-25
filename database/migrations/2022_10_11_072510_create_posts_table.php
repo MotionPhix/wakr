@@ -17,7 +17,8 @@ return new class extends Migration
       $table->id();
       $table->string('title');
       $table->string('slug')->nullable();
-      $table->text('content');
+      $table->text('intro')->nullable();
+      $table->text('content')->nullable();
       $table->timestamps();
 
       $table->foreignId('user_id')->constrained('users')->onDelete('cascade');

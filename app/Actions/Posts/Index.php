@@ -4,7 +4,7 @@ namespace App\Actions\Posts;
 
 use Illuminate\Http\Response;
 
-class AllPosts
+class Index
 {/**
    * Display a listing of the resource.
    *

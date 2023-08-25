@@ -2,8 +2,8 @@
 
 namespace App\Actions\Posts;
 
+use App\Http\Requests\Posts\PostStoreRequest;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use ProtoneMedia\Splade\Facades\Toast;
 
@@ -15,13 +15,9 @@ class StorePost
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function __invoke(Request $request)
+  public function __invoke(PostStoreRequest $request)
   {
-    $validated_posting = $request->validate([
-      'title' => 'required|min:4',
-      'content' => 'required|min:8',
-      'photo_path' => 'image|File::image()->atLeast(1024)->smallerThan(12 * 1024)'
-    ]);
+    $validated_posting = $request->validated();
 
     $validated_posting['slug'] = Str::slug($validated_posting['title']);
     $validated_posting['user_id'] = auth()->user()->id;

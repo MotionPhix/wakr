@@ -2,57 +2,49 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::middleware('splade')->group(function () {
+
   Route::spladeTable();
 
   Route::group(
-    ['prefix' => 'posts'], function () {
-    Route::get(
-      '/',
-      \App\Actions\Posts\AllPosts::class
-    )->middleware(['auth', 'verified'])->name('posts.index');
+    ['prefix' => 'articles', 'middleware' => 'auth'], function () {
 
     Route::get(
+      '/',
+      \App\Actions\Posts\Index::class
+    )->name('posts.index');
+
+    Route::get(
+      '/create',
+      \App\Actions\Posts\Form::class
+    )->name('posts.create');
+
+    Route::post(
       '/',
       \App\Actions\Posts\StorePost::class
-    )->middleware(['auth', 'verified'])->name('posts.store');
-
-    Route::get(
-      '/{post}',
-      \App\Actions\Posts\ShowPost::class
-    )->middleware(['auth', 'verified'])->name('posts.show');
-
-    Route::get(
-      '/{post}/edit',
-      \App\Actions\Posts\PostForm::class
-    )->middleware(['auth', 'verified'])->name('posts.edit');
+    )->name('posts.store');
 
     Route::patch(
       '/{post}',
       \App\Actions\Posts\UpdatePost::class
-    )->middleware(['auth', 'verified'])->name('posts.update');
+    )->name('posts.update');
 
     Route::delete(
       '/{post}',
       \App\Actions\Posts\DeletePost::class
-    )->middleware(['auth', 'verified'])->name('posts.destroy');
-  });
+    )->name('posts.destroy');
 
-  // Route::resource(
-  //   'posts',
-  //   \App\Http\Controllers\PostController::class
-  // )->middleware(['auth', 'verified']);
+    Route::get(
+      '/{post}',
+      \App\Actions\Posts\ShowPost::class
+    )->name('posts.show');
+
+    Route::get(
+      '/{post}/edit',
+      \App\Actions\Posts\Form::class
+    )->name('posts.edit');
+
+  });
 
   Route::resource(
     'posts.comments',

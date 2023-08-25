@@ -4,18 +4,18 @@ namespace App\Actions\Posts;
 
 use App\Models\Post;
 
-class PostForm
+class Form
 {
   /**
    * Display the specified resource.
    *
-   * @param  \App\Models\Post  $post
+   * @param  \App\Models\Post $post
    * @return \Illuminate\Http\Response
    */
   public function __invoke(Post $post = null)
   {
     return view('posts.form', [
-      'post' => $post ? $post : new Post(),
+      'post' => $post ?? new Post(),
     ]);
   }
 }

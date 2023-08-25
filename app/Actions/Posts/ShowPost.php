@@ -15,7 +15,6 @@ class ShowPost
    */
   public function __invoke(Post $post)
   {
-
     SEO::title($post->title . ' | Posts')
       ->description('Become the Splade expert!')
       ->keywords('laravel, splade, course');

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,8 +23,14 @@ class Post extends Model
   protected $fillable = [
     'title',
     'slug',
+    'intro',
     'content',
-    'user_id'
+    'user_id',
+    'status'
+  ];
+
+  protected $casts = [
+    'created_at' => 'date:d m, Y',
   ];
 
   public function user(): BelongsTo
@@ -43,6 +51,22 @@ class Post extends Model
   public function getFullPathAttribute()
   {
     return Storage::disk('posts')->url($this->path);
+  }
+
+  public function archived(): bool
+  {
+    return $this->status === 'archived';
+  }
+
+  /**
+   * Interact with the posts's creation date.
+   */
+  protected function posted(): Attribute
+  {
+    return Attribute::make(
+      get: fn (string $value) => ucfirst($value),
+      set: fn (string $value) => strtolower($value),
+    );
   }
 
   public static function boot()

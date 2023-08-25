@@ -5,7 +5,7 @@ export default {
 
   methods: {
     go() {
-      this.$splade.visit(`posts/${this.article.id}`);
+      this.$splade.visit(`articles/${this.article.id}`);
     }
   },
 
