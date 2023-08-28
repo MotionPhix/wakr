@@ -49,20 +49,11 @@
       placeholder="Pick a company"
       label="Companies" />
 
-    <section>
-      <div v-for="(phone, idx) in form.phones">
-        <input type="text" v-model="phone.number">
-      </div>
-    </section>
+    <section class="col-span-2">
 
-    <button
-      type="button"
-      @click="form.phones.push({
-        'number': '',
-        'type': ''
-      })">
-      Add phone
-    </button>
+      <PhoneCounter :form="form" />
+
+    </section>
 
     {{-- <x-splade-wysiwyg
       name="bio"
@@ -70,7 +61,7 @@
       placeholder="Provide contact's brief info" /> --}}
 
     <section
-      class="flex items-center justify-end gap-2 col-span-2">
+      class="flex items-center justify-end col-span-2 gap-2">
 
       <x-splade-submit
         class="px-3 py-1.5 border-2 text-lime-100 border-lime-500 bg-lime-500 hover:bg-lime-700 hover:border-lime-700 transition"

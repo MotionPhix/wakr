@@ -31,7 +31,7 @@ import { SpladePlugin, renderSpladeApp } from '@protonemedia/laravel-splade'
 
 import SalesChart from './Components/SalesChart.vue'
 import FastSellingChart from './Components/FastSellingChart.vue'
-import Post from './Components/Post.vue'
+import PhoneCounter from './Components/PhoneCounter.vue'
 
 const el = document.getElementById('app')
 
@@ -61,7 +61,7 @@ createApp({
       IconUser,
       IconPlus,
       IconTrash,
-      Post,
+      PhoneCounter,
     },
   })
   .use(VueApexCharts)

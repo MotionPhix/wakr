@@ -4,6 +4,7 @@ namespace App\Actions\Contacts;
 
 use App\Http\Requests\Contacts\ContactStoreRequest;
 use App\Models\Contact;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use ProtoneMedia\Splade\Facades\Toast;
 
@@ -15,8 +16,10 @@ class Store
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function __invoke(ContactStoreRequest $request)
+  public function __invoke(Request $request) //ContactStore
   {
+    dd($request->all());
+
     $validated_data = $request->validated();
 
     Contact::create($validated_data);
