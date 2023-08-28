@@ -4,20 +4,19 @@
       Add comment
     </x-modal-title>
 
-    <x-splade-form 
+    <x-splade-form
       class="flex flex-col gap-5"
       action="{{ route('posts.comments.store', $post) }}"
       method="post">
 
-      <x-splade-textarea  
+      <x-splade-textarea
         autosize
-        name="body" 
+        name="body"
         label="Write your comment" />
 
-      
-      <x-splade-submit 
-        class="bg-lime-500 hover:bg-lime-700 transition" 
-        type="submit" 
+      <x-splade-submit
+        class="bg-lime-500 hover:bg-lime-700 transition"
+        type="submit"
         label="Post" />
 
     </x-splade-form>

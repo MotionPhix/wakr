@@ -1,7 +1,5 @@
 <x-guest-layout>
     <x-auth-card>
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" />
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" />
@@ -19,10 +17,12 @@
                     </Link>
                 @endif
 
-                <x-splade-submit 
-                    class="bg-lime-500 hover:bg-lime-700 transition" 
+                <x-splade-submit
+                    class="bg-lime-500 hover:bg-lime-700 transition"
                     :label="__('Log in')" />
             </div>
         </x-splade-form>
+
     </x-auth-card>
+
 </x-guest-layout>

@@ -1,19 +1,28 @@
-<div class="min-h-screen bg-gray-100">
+<summary>
+
   @include('layouts.navigation')
 
-  <!-- Page Heading -->
-  <header class="sticky top-0 bg-white shadow">
-    <div class="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      {{ $header }}
-    </div>
-  </header>
+  @isset($header)
 
-  <!-- Page Content -->
+    <header class="sticky top-0 bg-white shadow z-10">
+
+      <div class="flex items-center px-6 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
+
+        {{ $header }}
+
+      </div>
+
+    </header>
+
+  @endisset
+
   <main>
+
     {{ $slot }}
+
   </main>
 
-  <footer class="max-w-2xl mx-auto text-gray-600 body-font">
+  <footer class="max-w-2xl mx-auto text-gray-600 body-font p4-6 border-t">
     <div class="container flex flex-col items-center px-5 py-8 mx-auto sm:flex-row">
       <Link
         class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start"
@@ -52,4 +61,5 @@
       </span>
     </div>
   </footer>
-</div>
+
+</summary>

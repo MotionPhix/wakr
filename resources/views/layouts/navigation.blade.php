@@ -8,7 +8,7 @@
                     <div class="shrink-0 flex items-center">
                         <Link href="{{ route('dashboard') }}">
                             <x-application-logo
-                                class="block h-10 w-auto fill-current text-gray-600" />
+                              class="block h-10 w-auto fill-current text-gray-600" />
                         </Link>
                     </div>
 
@@ -21,9 +21,21 @@
                         </x-nav-link>
 
                         <x-nav-link
-                            :href="route('posts.index')"
-                            :active="request()->routeIs('posts.*')">
-                            {{ __('Posts') }}
+                            :href="route('companies.index')"
+                            :active="request()->routeIs('companies.*')">
+                            {{ __('Companies') }}
+                        </x-nav-link>
+
+                        <x-nav-link
+                            :href="route('contacts.index')"
+                            :active="request()->routeIs('contacts.*')">
+                            {{ __('Contacts') }}
+                        </x-nav-link>
+
+                        <x-nav-link
+                            :href="route('projects.index')"
+                            :active="request()->routeIs('projects.*')">
+                            {{ __('Projects') }}
                         </x-nav-link>
                     </div>
                 </div>
@@ -78,8 +90,16 @@
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.*')">
-                    {{ __('Posts') }}
+                <x-responsive-nav-link :href="route('companies.index')" :active="request()->routeIs('companies.*')">
+                    {{ __('Companies') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.*')">
+                    {{ __('Contacts') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.*')">
+                    {{ __('Projects') }}
                 </x-responsive-nav-link>
             </div>
 

@@ -38,4 +38,18 @@ class ImageFactory extends Factory
       'path' => $path . '.jpg'
     ];
   }
+
+  public function configure()
+  {
+    return $this->afterCreating(function (\App\Models\User $user) {
+      $numPhones = fake('en_ZA')->numberBetween(0, 2);
+
+      for ($i = 0; $i < $numPhones; $i++) {
+        $user->phones()->create([
+          'number' => fake('en_ZA')->phoneNumber(),
+          'type' => fake('en_ZA')->randomElement(['work', 'home', 'mobile'])
+        ]);
+      }
+    });
+  }
 }

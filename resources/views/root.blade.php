@@ -8,9 +8,6 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.bunny.net/css2?family='DM+Sans':wght@400;600;700&display=swap">
-
   <style>
     @keyframes opaque {
       0% {
@@ -672,13 +669,13 @@
 
   </style>
 
-  <!-- Scripts -->
   @vite(['resources/js/app.js'])
   @spladeHead
 </head>
-<body class="font-sans antialiased bg-gray-300">
+
+<body class="font-sans antialiased bg-gray-100">
   @splade
-  
+
   <script src="{{ asset('js/charts-demo.js') }}"></script>
 
 </body>

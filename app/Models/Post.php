@@ -58,14 +58,21 @@ class Post extends Model
     return $this->status === 'archived';
   }
 
+  protected function author(): Attribute
+  {
+    return Attribute::make(
+      get: fn ($value) => $this->user->first_name . ' ' . $this->user->last_name
+    );
+  }
+
   /**
    * Interact with the posts's creation date.
    */
-  protected function posted(): Attribute
+  protected function publishedOn(): Attribute
   {
     return Attribute::make(
-      get: fn (string $value) => ucfirst($value),
-      set: fn (string $value) => strtolower($value),
+      get: fn (mixed $value, array $attributes) => (new Carbon($attributes['created_at']))->format('d M, y'),
+      // set: fn (string $value) => strtolower($value),
     );
   }
 
