@@ -1,12 +1,6 @@
-<template>
-  <apexchart width="100%"
-             :options="options"
-             :series="series" />
-</template>
-
 <script>
 export default ({
-  data: function () {
+  data() {
     return {
       options: {
         chart: {
@@ -20,7 +14,7 @@ export default ({
         xaxis: {
           type: 'integer',
           categories: [
-            "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+            'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',
           ],
           labels: {
             show: true,
@@ -65,13 +59,20 @@ export default ({
       //   ],
       // }],
 
-
       series: [
         { name: 'Unique visitors', data: [70, 65, 70, 65, 72, 90, 84] },
         { name: 'Total visitors', data: [92, 92, 90, 97, 90, 112, 98] },
         { name: 'Total visitors', data: [112, 100, 112, 112, 86, 101, 92] },
       ],
     }
-  }
-});
+  },
+})
 </script>
+
+<template>
+  <apexchart
+    width="100%"
+    :options="options"
+    :series="series"
+  />
+</template>

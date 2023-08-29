@@ -1,13 +1,6 @@
-<template>
-  <apexchart width="100%"
-             :options="options"
-             :series="series" />
-</template>
-
 <script>
-
 export default ({
-  data: function () {
+  data() {
     return {
       options: {
         chart: {
@@ -55,6 +48,14 @@ export default ({
 
       series: [20, 65, 15],
     }
-  }
-});
+  },
+})
 </script>
+
+<template>
+  <apexchart
+    width="100%"
+    :options="options"
+    :series="series"
+  />
+</template>

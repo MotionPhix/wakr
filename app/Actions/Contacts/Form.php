@@ -16,7 +16,7 @@ class Form
   public function __invoke(Contact $contact = null)
   {
     return view('contacts.form', [
-      'contact' => $contact ?? new Contact(),
+      'contact' => $contact ? $contact->load('phones') : (new Contact())->load('phones'),
       'companies' => Company::pluck('name', 'id')
     ]);
   }

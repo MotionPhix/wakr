@@ -27,7 +27,6 @@
     action="{{ $contact->id ? route('contacts.update', $contact) : route('contacts.store') }}"
     :method="$contact->id ? 'patch' : 'post'">
 
-
     <x-splade-input
       name="first_name"
       label="First name"
@@ -51,7 +50,7 @@
 
     <section class="col-span-2">
 
-      <PhoneCounter :form="form" />
+      <PhoneCounter v-model="form.phones" />
 
     </section>
 

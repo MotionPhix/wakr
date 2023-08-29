@@ -1,38 +1,84 @@
 <script setup>
-import { toRefs } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
-  form: {
-    type: Object,
-    required: true,
+  modelValue: {
+    type: [Array, String],
+    default: () => [
+      {
+        number: '',
+        type: '',
+      },
+    ],
   },
 })
 
-console.log(props.form.phones)
+const emit = defineEmits(['update:modelValue'])
 
-const { tempForm } = toRefs(props)
+const phones = computed(() => Array.isArray(props.modelValue) ? props.modelValue : [])
 
-function onAddPhone() {
-  tempForm.value.phones.push({
-    number: '',
-    type: '',
-  })
+function addPhone() {
+  phones.value.push({ number: '', type: '' })
+  emitUpdatedPhones()
+}
+
+function removePhone(index) {
+  phones.value.splice(index, 1)
+  emitUpdatedPhones()
+}
+
+function emitUpdatedPhones() {
+  const updatedPhones = [...phones.value]
+  emit('update:modelValue', updatedPhones)
 }
 </script>
 
 <template>
-  <div class="flex flex-row justify-center space-x-4">
-    <div v-for="(phone, idx) in form.phones" :key="idx">
-      <input v-model="phone.number" type="text">
+  <label class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-1">
+    Contact phones
+  </label>
 
-      <input v-model="phone.type" type="text">
-    </div>
-
-    <button
-      type="button"
-      @click="onAddPhone"
+  <div
+    v-for="(phone, index) in phones"
+    :key="index"
+    class="grid grid-cols-2 gap-6 w-full mb-6"
+  >
+    <input
+      v-model="phone.number"
+      type="text"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
+      placeholder="Enter a phone number"
     >
-      Add phone
-    </button>
+
+    <article class="flex gap-2">
+      <select
+        v-model="phone.type"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-600 focus:border-lime-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
+      >
+        <option value="" disabled>
+          Pick a phone type
+        </option>
+
+        <option value="mobile">
+          Mobile
+        </option>
+
+        <option value="home">
+          Home
+        </option>
+
+        <option value="office">
+          Office
+        </option>
+      </select>
+
+      <button type="button" class="hover:text-rose-500" @click="removePhone(index)">
+        <IconTrash />
+      </button>
+    </article>
   </div>
+
+  <button type="button" class="flex items-center gap-2 hover:bg-gray-200 rounded py-1.5 px-2" @click="addPhone">
+    <IconPlus /> <span>Add Phone</span>
+  </button>
 </template>

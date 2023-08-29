@@ -16,10 +16,8 @@ class Store
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function __invoke(Request $request) //ContactStore
+  public function __invoke(ContactStoreRequest $request)
   {
-    dd($request->all());
-
     $validated_data = $request->validated();
 
     Contact::create($validated_data);
