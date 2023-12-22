@@ -1,25 +1,21 @@
 <?php
 
-namespace App\Actions\Projects;
+namespace App\Http\Controllers\Contacts;
 
-use App\Http\Requests\Projects\ProjectStoreRequest;
-use App\Models\Project;
+use App\Http\Controllers\Controller;
+use App\Models\Contact;
+use App\Http\Requests\Contact\ContactRequest;
 use Illuminate\Support\Str;
 use ProtoneMedia\Splade\Facades\Toast;
 
-class Store
+class Store extends Controller
 {
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
-  public function __invoke(ProjectStoreRequest $request)
+  public function __invoke(ContactRequest $request)
   {
+
     $validated_data = $request->validated();
 
-    Project::create($validated_data);
+    Contact::create($validated_data);
 
     /*if ($request->hasFile('photo_path')) { // save file if image file is available
       $imagePath = $request->file('photo_path')->store('posts', 'local'); // Save the image to local storage in the 'posts' directory
@@ -31,10 +27,10 @@ class Store
       ]);
     }*/
 
-    Toast::title('Good going!')
-      ->success('A project was added!')
+    Toast::title('Awesome!')
+      ->success('New contact was added!')
       ->autoDismiss(5);
 
-    return redirect(route('projects.index'));
+    return redirect(route('contacts.index'));
   }
 }

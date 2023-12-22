@@ -1,23 +1,17 @@
 <?php
 
-namespace App\Actions\Contacts;
+namespace App\Http\Controllers\Contacts;
 
+use App\Http\Controllers\Controller;
 use App\Models\Contact;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use ProtoneMedia\Splade\Facades\Toast;
 
-class Delete
+class Trash extends Controller
 {
-
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  \App\Models\Contact  $contact
-   * @return \Illuminate\Http\Response
-   */
   public function __invoke(Contact $contact)
   {
+
     // Eager load images and comments to minimize database queries
     $contact->load('images', 'comments');
 

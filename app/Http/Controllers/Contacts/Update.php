@@ -1,22 +1,17 @@
 <?php
 
-namespace App\Actions\Contacts;
+namespace App\Http\Controllers\Contacts;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Contact\ContactRequest;
 use App\Models\Contact;
-use Illuminate\Http\Request;
 use ProtoneMedia\Splade\Facades\Toast;
 
-class Update
+class Update extends Controller
 {
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Models\Contact  $contact
-   * @return \Illuminate\Http\Response
-   */
-  public function __invoke(Request $request, Contact $contact)
+  public function __invoke(ContactRequest $request, Contact $contact)
   {
+
     $contact->update($request->only('first_name', 'last_name', 'email', 'company_id'));
 
     // $contact->image()->save(\App\Models\Image::make(['path' => $path]));

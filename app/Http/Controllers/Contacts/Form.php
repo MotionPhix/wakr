@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Actions\Contacts;
+namespace App\Http\Controllers\Contacts;
 
+use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Contact;
 
-class Form
+class Form extends Controller
 {
   /**
-   * Display the specified resource.
+   * Handle the incoming request.
    *
-   * @param  \App\Models\Contact $contact
+   * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
   public function __invoke(Contact $contact = null)

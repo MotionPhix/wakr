@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Actions\Contacts;
+namespace App\Http\Controllers\Contacts;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Contact;
 use ProtoneMedia\Splade\Facades\SEO;
 
-class Show
+class Show extends Controller
 {
-  /**
-   * Display the specified resource.
-   *
-   * @param  \App\Models\Contact  $contact
-   * @return \Illuminate\Http\Response
-   */
   public function __invoke(Contact $contact)
   {
     SEO::title($contact->full_name . ' | Wakr')
@@ -21,8 +17,6 @@ class Show
 
     return view('contacts.show', [
       'contact' => $contact,
-      // 'projects' => $contact->projects()->latest()->get(),
     ]);
-
   }
 }
