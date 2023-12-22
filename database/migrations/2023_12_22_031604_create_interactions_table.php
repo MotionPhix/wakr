@@ -13,14 +13,8 @@ return new class extends Migration
    */
   public function up()
   {
-    Schema::create('addresses', function (Blueprint $table) {
+    Schema::create('interactions', function (Blueprint $table) {
       $table->id();
-
-      $table->string('address_line_1');
-      $table->string('address_line_2');
-      $table->string('address_line_3');
-      $table->string('address_line_4');
-
       $table->timestamps();
     });
   }
@@ -32,6 +26,6 @@ return new class extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('addresses');
+    Schema::dropIfExists('interactions');
   }
 };

@@ -4,7 +4,7 @@
 
   @isset($header)
 
-    <header class="sticky top-0 bg-white shadow z-10">
+    <header class="sticky top-0 z-10 bg-white shadow">
 
       <div class="flex items-center px-6 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
 
@@ -22,11 +22,11 @@
 
   </main>
 
-  <footer class="max-w-2xl mx-auto text-gray-600 body-font p4-6 border-t">
+  <footer class="max-w-2xl mx-auto text-gray-600 border-t body-font p4-6">
     <div class="container flex flex-col items-center px-5 py-8 mx-auto sm:flex-row">
       <Link
         class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start"
-        href="{{ route('dashboard') }}">
+        href="{{ route('contacts.index') }}">
         <x-application-logo
             class="w-10 h-10 p-2 text-white rounded-full fill-current bg-lime-500" />
         <span class="ml-3 text-xl">{{ config('app.name') }}</span>

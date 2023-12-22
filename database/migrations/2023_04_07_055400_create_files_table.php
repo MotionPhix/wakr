@@ -15,10 +15,12 @@ return new class extends Migration
   {
     Schema::create('files', function (Blueprint $table) {
       $table->id();
+
       $table->string('original_filename', 70);
       $table->string('path');
 
-      $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
+      $table->morphs('fileable');
+
       $table->foreignId('user_id')->constrained('users');
 
       $table->timestamps();

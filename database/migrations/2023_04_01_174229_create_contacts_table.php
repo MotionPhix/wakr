@@ -15,15 +15,17 @@ return new class extends Migration
   {
     Schema::create('contacts', function (Blueprint $table) {
       $table->id();
-      $table->string('first_name', 30);
-      $table->string('last_name', 30);
-      $table->string('email', 50)->nullable();
-      $table->enum('status', ['active', 'dormant'])->default('active');
 
-      $table->unique(['first_name', 'last_name', 'email']);
+      $table->string('first_name', 60);
+      $table->string('last_name', 60);
+      $table->string('middle_name', 60)->nullable();
+      $table->string('nickname', 60)->nullable();
+      $table->string('title', 10)->nullable();
+      $table->string('job_title', 150)->nullable();
+      $table->string('department', 150)->nullable();
 
-      $table->foreignId('company_id')->index()->constrained('companies')->onDelete('cascade');
-      $table->foreignId('user_id')->index()->nullable()->constrained('users');
+      $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
+      $table->foreignId('user_id')->index()->constrained('users');
 
       $table->timestamps();
     });

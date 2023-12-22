@@ -18,7 +18,6 @@ class Contact extends Model
   protected $fillable = [
     'first_name',
     'last_name',
-    'email',
     'company_id',
     'user_id',
     'status'
@@ -50,20 +49,6 @@ class Contact extends Model
     );
   }
 
-  public function archived(): Attribute
-  {
-    return Attribute::make(
-      get: fn ($value) => $this->status === 'dormant'
-    );
-  }
-
-  public function statusColor(): Attribute
-  {
-    return Attribute::make(
-      get: fn ($value) => ['active' => 'bg-green-100 text-green-800', 'dormant' => 'bg-rose-100 text-rose-800'][$this->status] ?? 'bg-blue-100 text-blue-800'
-    );
-  }
-
   public function scopeWithLastInteraction(Builder $query)
   {
     $query->addSubSelect(
@@ -79,14 +64,19 @@ class Contact extends Model
     return $this->belongsTo(User::class);
   }
 
-  public function projects(): HasMany
-  {
-    return $this->hasMany(Project::class);
-  }
-
   public function phones(): MorphMany
   {
     return $this->morphMany(Phone::class, 'phoneable');
+  }
+
+  public function emails(): MorphMany
+  {
+    return $this->morphMany(Email::class, 'emailable');
+  }
+
+  public function addresses(): MorphMany
+  {
+    return $this->morphMany(Address::class, 'addressable');
   }
 
   public function total()

@@ -19,23 +19,17 @@
 
   </x-slot>
 
-  <section class="py-12 max-w-4xl mx-auto space-y-6">
+  <section class="max-w-4xl py-12 mx-auto space-y-6">
 
     <x-table>
 
       <x-slot name="head">
 
-        <x-table.heading
-          sortable
-          wire:click="sortBy('first_name')"
-          :direction="$field === 'first_name' ? $direction : null">
+        <x-table.heading>
           Full Name
         </x-table.heading>
 
-        <x-table.heading
-          sortable
-          wire:click="sortBy('email')"
-          :direction="$field === 'email' ? $direction : null">
+        <x-table.heading>
           Email
         </x-table.heading>
 
@@ -43,10 +37,7 @@
           Phone
         </x-table.heading>
 
-        <x-table.heading
-          sortable
-          wire:click="sortBy('status')"
-          :direction="$field === 'status' ? $direction : null">
+        <x-table.heading>
           Status
         </x-table.heading>
 
@@ -93,7 +84,7 @@
                 </span>
               </x-table.cell>
 
-              <x-table.cell class="text-right flex items-center gap-2">
+              <x-table.cell class="flex items-center gap-2 text-right">
 
                 <Link
                   modal
@@ -134,7 +125,7 @@
                 <IconUser
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-24 h-24 bg-lime-500 rounded-full text-lime-200 p-1" />
+                  class="w-24 h-24 p-1 rounded-full bg-lime-500 text-lime-200" />
 
                 <h2 class="text-2xl font-medium">
                   You don't have any contacts yet!
@@ -146,7 +137,7 @@
                     modal
                     href="{{ route('contacts.create') }}"
                     aria-label="modal dialogue to create a new contact"
-                    class="px-4 py-3 inline-flex items-center gap-2 bg-lime-500 hover:bg-lime-700 transition text-white font-semibold rounded-full">
+                    class="inline-flex items-center gap-2 px-4 py-3 font-semibold text-white transition rounded-full bg-lime-500 hover:bg-lime-700">
 
                     <IconPlus stroke-width="2" />
 

@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +19,8 @@ class User extends Authenticatable
    * @var array<int, string>
    */
   protected $fillable = [
-    'name',
+    'first_name',
+    'last_name',
     'email',
     'password',
   ];
@@ -43,16 +43,6 @@ class User extends Authenticatable
   protected $casts = [
     'email_verified_at' => 'datetime',
   ];
-
-  public function posts(): HasMany
-  {
-    return $this->hasMany(\App\Models\Post::class);
-  }
-
-  public function comments(): HasMany
-  {
-    return $this->hasMany(\App\Models\Comment::class);
-  }
 
   public function avatarUrl()
   {

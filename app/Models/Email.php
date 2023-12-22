@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Address extends Model
+class Email extends Model
 {
   use HasFactory;
 
-  public function addressable(): MorphTo
+  public function emailable(): MorphTo
   {
     return $this->morphTo();
   }

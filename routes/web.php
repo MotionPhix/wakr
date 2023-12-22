@@ -4,14 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('splade')->group(function () {
 
-  Route::spladeTable();
-
-  Route::group(
-    ['prefix' => 'contacts', 'middleware' => 'auth'], function () {
+  Route::group(['middleware' => 'auth'], function () {
 
     Route::get(
       '/',
-      \App\Actions\Contacts\Index::class
+      \App\Http\Controllers\Contacts\Index::class
     )->name('contacts.index');
 
     Route::get(
@@ -85,23 +82,6 @@ Route::middleware('splade')->group(function () {
     )->name('projects.edit');
 
   });
-
-  Route::resource(
-    'companies',
-    \App\Http\Controllers\CommentController::class
-  )->middleware(['auth', 'verified']);
-
-  // Route::resource('comments', \App\Http\Controllers\CommentController::class);
-  // Route::get('posts', [\App\Http\Controllers\PostController::class, 'index'])->name('contacts.index');
-  // Route::post('posts/{post}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('contacts.destroy');
-
-  Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-      return view('dashboard');
-    })->name('dashboard');
-  });
-
-  // Route::get('posts/export/', [\App\Http\Controllers\PostController::class, 'export']);
 
   require __DIR__ . '/auth.php';
 });
